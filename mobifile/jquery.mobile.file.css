@@ -1,0 +1,10 @@
+.ui-file {overflow:hidden; padding:2px; position:relative; margin:.5em 0}
+.ui-file > .ui-btn {float:right; margin:0px 5px; width:120px}
+.ui-file-wrapper {position:absolute; top:0px; left:0px; height:100%; border:0}
+.ui-file-input {position:absolute; top:0px; left:0px; cursor:pointer; opacity:0; filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0)}
+.ui-file-feedback {font-style:italic; font-weight:normal; margin-left:5px; display:block; text-align:left; padding:.8em 0em .8em 1.4em}
+.ui-file-feedback-populated {font-style:normal; font-weight:bold; background:url('images/icon-generic.gif') left .9em no-repeat}
+
+.ui-file-ext-jpg, .ui-file-ext-gif, .ui-file-ext-png, .ui-file-ext-bmp, .ui-file-ext-jpeg {background-image:url('images/icon-image.gif')}
+.ui-file-ext-mp3, .ui-file-ext-mp4, .ui-file-ext-mov, .ui-file-ext-swf, .ui-file-ext-wav, .ui-file-ext-m4v {background-image:url('images/icon-media.gif')}
+.ui-file-ext-zip, .ui-file-ext-tar, .ui-file-ext-sit, .ui-file-ext-rar {background-image:url('images/icon-zip.gif')}

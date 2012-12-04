@@ -1,0 +1,29 @@
+.ui-gallery-block {float:left; width:20%; text-align:center}
+
+@media all and (min-width:930px) {
+    .ui-gallery-block {width:20%}
+}
+@media all and (min-width:610px) and (max-width:929px) {
+    .ui-gallery-block {width:25%}
+}
+@media all and (min-width:450px) and (max-width:609px) {
+    .ui-gallery-block {width:33.333%}
+}
+@media all and (min-width:320px) and (max-width:449px) {
+    .ui-gallery-block {width:50%}
+}
+
+.ui-gallery-link {display:block; margin:5px; border: 1px solid #aaa; cursor:pointer}
+.ui-gallery-link > img {display:block; width:100%; height:auto; border-radius:0.55em}
+.ui-gallery-prev > span, .ui-gallery-next > span {height:64px}
+.ui-gallery-prev, .ui-gallery-next {position:fixed; top:35%; z-index:999}
+.ui-gallery-prev {left:-32px}
+.ui-gallery-next {right:-32px}
+
+#ui-gallery-page,
+#ui-gallery-page > .ui-content {margin:0px; padding:0px; background-color:#000; height:100%; width:100%; overflow:hidden; position:relative}
+#ui-gallery-page > .ui-content div {position:absolute; top:0px; height:100%; width:100%; background-position:center; background-size:contain; background-repeat:no-repeat}
+#ui-gallery-page > .ui-header .ui-icon {margin-top:5px}
+#ui-gallery-page > .ui-footer  {text-align:center; padding:10px 0px}
+
+.ui-collapsible-content {overflow:hidden}

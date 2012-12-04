@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-touch-fullscreen" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+    <title>jQuery Mobile File Input plugin</title>
+    <link href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" rel="stylesheet" type="text/css"/>
+    <script src="http://code.jquery.com/jquery.min.js" type="text/javascript"></script>
+    <script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js" type="text/javascript"></script>
+
+    <script src="jquery.mobile.file.js" type="text/javascript"></script>
+    <link href="jquery.mobile.file.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript">
+        function consoleLog() {
+            console.log('DOM Updated');
+        }
+        function disableSecondFileSet() {
+            $(":jqmData(role='file-set') :eq(1) :jqmData(role='file')").trigger('disable');
+        }
+        function enableSecondFileSet() {
+            $(":jqmData(role='file-set') :eq(1) :jqmData(role='file')").trigger('enable');
+        }
+        function disableAllFiles() {
+            $(":jqmData(role='file')").trigger('disable');
+        }
+        function enableAllFiles() {
+            $(":jqmData(role='file')").trigger('enable');
+        }
+    </script>
+    <style type="text/css">
+        td pre {margin:.5em 0}
+        td {vertical-align:top}
+        .right {text-align:right; font-weight:bold}
+        pre {font-size:.9em}
+        pre.inline {font-size:1.1em; font-weight:bold; display:inline-block}
+    </style>
+</head>
+<body>
+<div data-role="page">
+    <div data-role="header">
+        <h1>jQuery Mobile File Input plugin</h1>
+    </div>
+    <div data-role="content">        
+        <div data-role="collapsible" data-theme="b" data-content-theme="d" data-collapsed="false" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+            <h3>Demonstration</h3>
+            <div data-role="file-set" data-ismultiple="true" data-theme="e" data-buttontheme="a">
+                <input data-role="file" type="file" name="firstFiles[]"/>
+            </div>
+            <pre>&lt;div data-role="file-set" data-ismultiple="true" data-theme="e" data-buttontheme="a"&gt;
+    &lt;input data-role="file" type="file" name="firstFiles[]"/&gt;
+&lt;/div&gt;</pre>
+            <div data-role="file-set" data-ismultiple="true" data-afterdomupdate="consoleLog">
+                <input data-role="file" type="file" name="secondFile[]"/>
+            </div>
+            <pre>&lt;div data-role="file-set" data-ismultiple="true" data-afterdomupdate="consoleLog"&gt;
+    &lt;input data-role="file" type="file" name="secondFile[]"/&gt;
+&lt;/div&gt;</pre>
+            <div data-role="file-set" data-uselang="fr" data-theme="c" data-buttontheme="e">
+                <input data-role="file" type="file" name="thirdFile"/>
+            </div>
+            <pre>&lt;div data-role="file-set" data-uselang="fr" data-theme="c" data-buttontheme="e"&gt;
+    &lt;input data-role="file" type="file" name="thirdFile"/&gt;
+&lt;/div&gt;</pre>
+            <div data-role="controlgroup" data-type="horizontal" data-mini="true" style="display:inline-block">
+                <a data-role="button" data-inline="true" href="javascript:disableSecondFileSet();">Disable second file-set</a>
+                <a data-role="button" data-inline="true" href="javascript:enableSecondFileSet();">Enable second file-set</a>
+            </div>
+            <div data-role="controlgroup" data-type="horizontal" data-mini="true" style="display:inline-block">
+                <a data-role="button" data-inline="true" href="javascript:disableAllFiles();">Disable all files</a>
+                <a data-role="button" data-inline="true" href="javascript:enableAllFiles();">Enable all files</a>
+            </div>
+        </div>
+        <div data-role="collapsible" data-theme="b" data-content-theme="d" data-collapsed="false" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+            <h3>HTML5 Attributes</h3>
+            <table style="width:100%" cellpadding="10">
+                <colgroup>
+                    <col style="width:200px"></col>
+                    <col></col>
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <td class="right">data-uselang</td>
+                        <td>Language used by the component<br/><i>default: 'en'</i></td>
+                    </tr>
+                    <tr>
+                        <td class="right">data-theme</td>
+                        <td>Theme swatch applied to the file input container<br/><i>default: 'a'</i></td>
+                    </tr>
+                    <tr>
+                        <td class="right">data-buttontheme</td>
+                        <td>Theme swatch applied to the remove button<br/><i>default: 'b'</i></td>
+                    </tr>
+                    <tr>
+                        <td class="right">data-ismultiple</td>
+                        <td>For a given file-set, when this option is set to
+                            <ul>
+                                <li><b>false</b>, a single file input is managed</li>
+                                <li><b>true</b>, multiple file inputs is managed and when a file is selected in the last file input, a new one is cloned and displayed below it.</li>
+                            </ul>
+                            <i>default: false</i></td>
+                    </tr>
+                    <tr>
+                        <td class="right">data-afterdomupdate</td>
+                        <td>Name of a javascript function called
+                            <ul>
+                                <li>after an existing file input is removed</li>
+                                <li>after a new file input is added and displayed</li>
+                            </ul>
+                            <i>default: 'undefined'</i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div data-role="collapsible" data-theme="b" data-content-theme="d" data-collapsed="false" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+            <h3>Functions</h3>
+
+            <h3>Localization</h3>
+            <div>Additional languages can be added like the sample below which adds french localization (which is already included at the end of the plugin file)</div>
+            <pre>$.extend($.mobile.file.prototype.options.lang, {
+    'fr': {
+        remove: 'Enlever',
+        noFileSelected: 'Cliquez ou touchez cette zone pour sélectionner un fichier...',
+        cannotUseFile: 'Votre appareil ne prend pas en charge l\'envoi de fichiers'
+    }
+});</pre>
+            <h3>Enable/Disable</h3>
+            <div>File inputs can be enabled/disabled by calling <pre class="inline">.trigger('enable')</pre> or <pre class="inline">.trigger('disable')</pre> methods.</div>
+            <div>This also allows mobile browsers lacking file upload support to disable the enhanced component when they disable the file input component.</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
