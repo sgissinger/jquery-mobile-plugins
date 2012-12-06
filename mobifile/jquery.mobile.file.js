@@ -67,7 +67,7 @@
 
                 files.each(function()
                 {
-                    self._resizeWrapper($(this).parents('.ui-file-wrapper'), $(this).parents('.ui-file'), $(this).parents('.ui-file').find('a'));
+                    self._resizeWrapper($(this).parents('.ui-file-wrapper'), $(this), $(this).parents('.ui-file'), $(this).parents('.ui-file').find('a'));
                 });
             });
             $(window).on('resize', this._resizeCallback);
@@ -153,7 +153,7 @@
                     .append(feedBack)
                     .append(wrapper.append(file))
                     .show('fast', function() {
-                        self._resizeWrapper(wrapper, container, removeButton);
+                        self._resizeWrapper(wrapper, file, container, removeButton);
                         self._afterDomUpdate();
                     });
         },
@@ -172,7 +172,7 @@
             else
                 removeButton.hide();
 
-            this._resizeWrapper(wrapper, container, removeButton);
+            this._resizeWrapper(wrapper, file, container, removeButton);
         },
 
         /**
@@ -189,7 +189,7 @@
             else
                 removeButton.show();
 
-            this._resizeWrapper(wrapper, container, removeButton);
+            this._resizeWrapper(wrapper, file, container, removeButton);
         },
 
         /**
@@ -210,7 +210,7 @@
                             .removeClass('ui-file-feedback-populated');
 
                     removeButton.hide();
-                    this._resizeWrapper(wrapper, container, removeButton);
+                    this._resizeWrapper(wrapper, file, container, removeButton);
                 }
             }
             else
@@ -223,14 +223,14 @@
                         .addClass(fileExt + ' ui-file-feedback-populated');
 
                 removeButton.show();
-                this._resizeWrapper(wrapper, container, removeButton);
+                this._resizeWrapper(wrapper, file, container, removeButton);
             }
         },
 
         /**
          *
          */
-        _resizeWrapper: function(wrapper, container, removeButton)
+        _resizeWrapper: function(wrapper, file, container, removeButton)
         {
             if(removeButton.is(':visible'))
                 w = (container.innerWidth() - removeButton.outerWidth(true)) + 'px';
@@ -238,6 +238,7 @@
                 w = '100%';
 
             wrapper.css({width: w});
+            file.css({left:0, top:0});
         },
 
         /**

@@ -1,5 +1,5 @@
 /*
- * Using concepts from
+ * Borrows codes and concepts from
  *    imageflip 0.1 (2012) - MIT License - Saman W Jayasekara
  *        http://cflove.org/2012/09/imageflip-jquery-mobile-image-gallery-plugin.cfm
  *        https://bitbucket.org/cflove/imageflip-jquery-mobile-image-gallery-plugin
@@ -50,6 +50,7 @@
         _linkSelector: ":jqmData(role='gallerylink')",
         _showSelector: ":jqmData(show='1')",
         _gallery: undefined,
+        _header : undefined,
         _footer : undefined,
         _view   : undefined,
         _selectedImage  : undefined,
@@ -70,7 +71,7 @@
                         $(this).attr(self._data('href'), $(this).attr('href')).removeAttr('href');
                         $(this).addClass('ui-gallery-link ui-corner-all');
                     })
-                    .click(function()
+                    .on('vclick', function()
                     {
                         self._gallery.children().removeAttr(self._data('show'));
 
@@ -110,7 +111,7 @@
                         theme: this.options.theme
                     }));
 
-            var header = $('<div>')
+            this._header = $('<div>')
                     .attr(this._data('role'), 'header')
                     .append($('<div>')                                    
                             .attr(this._data('role'), 'navbar')
@@ -131,7 +132,7 @@
 
             var prevButton = $('<a>', {href: 'javascript:;', title: this.__('previous')})
                     .addClass('ui-header-fullscreen ui-gallery-prev')
-                    .click(function(e) { self._swipe('prev'); })
+                    .on('vclick', function() { self._swipe('prev'); })
                     .buttonMarkup({
                         icon: 'arrow-l',
                         iconpos: 'right',
@@ -140,7 +141,7 @@
 
             var nextButton = $('<a>', {href: 'javascript:;', title: this.__('next')})
                     .addClass('ui-header-fullscreen ui-gallery-next')
-                    .click(function(e) { self._swipe('next'); })
+                    .on('vclick', function() { self._swipe('next'); })
                     .buttonMarkup({
                         icon: 'arrow-r',
                         theme: this.options.theme
@@ -203,7 +204,6 @@
                             if(self._canTranslate3d())
                                 self._transform(self.options.slideduration);
                     });
-            
 
             var content = $('<div>')
                     .attr(this._data('role'), 'content')
@@ -214,7 +214,7 @@
             return $('<div>', { id: this._domid})
                     .attr(this._data('role'), 'page')
                     .attr(this._data('url'), location.pathname + location.search + '#' + this.options.hashname)
-                    .append(header)
+                    .append(this._header)
                     .append(content)
                     .append(this._footer)
                     .on('pagehide', function(e) { $(this).remove(); });
